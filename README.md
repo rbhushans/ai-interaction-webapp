@@ -2,14 +2,17 @@
 
 
 Run the following commands from the root directory:
-* Activate virtual environment and set environment variables:
-  
+* Create virtual environment and set environment variables:
+
+rm -rf env
+python -m venv env
 source env/bin/activate      
-export FLASK_APP=run.py
+export FLASK_APP=run.py   
 export FLASK_ENV=development
 
 * Install dependencies:
 
+pip install --upgrade pip
 pip install -r requirements.txt
 
 * Run the application:
