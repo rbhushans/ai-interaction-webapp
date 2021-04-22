@@ -24,3 +24,6 @@ pip install -r requirements.txt
 
 flask run
 
+
+# Notes
+If no changes are seen after changing static files, do a hard refresh with CMD + SHIFT + R

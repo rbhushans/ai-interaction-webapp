@@ -1,0 +1,16 @@
+:root {
+    --background-color: white;
+    --header-color: black;
+    --header-font: 'sans-serif';
+    --body-color: black;
+    --body-font: 'sans-serif';
+}
+
+h1 {
+    color: var(--header-color);
+}
+
+body {
+    background-color: var(--background-color);
+}
+  
