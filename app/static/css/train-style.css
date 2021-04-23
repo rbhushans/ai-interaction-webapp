@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    height: 6em;
+
+    background-color: #C3E8F8;
+
+    margin: 0;
+    padding: 0;
+}
+
+.app-img {
+    width: 3em;
+    height: 3em;
+
+    background-color: black;
+
+    margin-left: 1.5em;
+}
+
+.page-title {
+    font-family: sans-serif;
+    font-weight: 600;
+
+    padding: 0;
+    margin: 0 0 0 1em;
+    
+}
+
+.main-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+    height: calc(100vh - 6em);
+
+}
+
+/* Left side of the web app (feature options that can be selected) */
+.train-body-left {
+    background-color: #FFFFFF;
+    position: relative;
+    width: 70vw;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    margin: 0;
+    padding: 0;
+
+
+}
+
+.feature-option {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+
+    width: 10em;
+    height: 3em;
+
+    margin: 2em 2em;
+
+    border-radius: 0.4em;
+
+    background-color: #C3E8F8;
+
+    box-shadow: 3px 3px 6px 1px #888888;
+
+    cursor: pointer;
+}
+
+/* * Right side of the web app (selected train features and btn to start) */
+.train-body-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+    width: 30vw;
+
+    margin: 0;
+    padding: 0;
+
+
+    background-color: #C4C4C4;
+}
+
+.selected-features-list {
+    width: 99%;
+    height: 80%;
+    
+    margin: 0;
+    padding: 0;
+
+    /*
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    */
+}
+
+.start-train-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 60%;
+    height: 3.5em;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+
+    border-radius: 0.4em;
+    background-color: #C3E8F8;
+    cursor: pointer;
+
+}

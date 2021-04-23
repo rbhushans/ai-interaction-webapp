@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Train</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/train-style.css') }}">
 </head>
 <body>
-    <h1>Train</h1>
+    <div class="site-header">
+        <div class="app-img"></div>
+        <h1 class="page-title">NAME FOR WEB APP</h1>
+    </div>
+    <div class="main-body">
+        <div class="train-body-left">
+            <!-- Example buttons that will be changed later -->
+            <div class="feature-option">Feature 1</div>
+            <div class="feature-option">Feature 2</div>
+            <div class="feature-option">Feature 3</div>
+            <div class="feature-option">Feature 4</div>
+            <div class="feature-option">Feature 5</div>
+            <div class="feature-option">Feature 6</div>
+        </div>
+        <div class="train-body-right">
+            <div class="selected-features-list"></div>
+            <div class="start-train-btn">TRAIN</div>
+        </div>
+    </div>
 </body>
 </html>
