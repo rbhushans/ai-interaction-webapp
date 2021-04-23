@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home-style.css') }}">
 </head>
 <body>
-    <h1>Home</h1>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <div id="home-header">
+        <h1>NAME FOR WEB APP</h1>
+    </div>
+    <p id="home-paragraph">Paragraph about AI and recidivism</p>
+
+    <div id="home-buttons">
+        <a class="home-link" href="train">Basic Tutorial</a>
+        <a class="home-link" href="404">Advanced Mode</a>
+    </div>
+    <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
 </body>
 </html>
