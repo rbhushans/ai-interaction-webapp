@@ -1,0 +1,205 @@
+:root {
+    --background-color: white;
+    --header-color: black;
+    --header-font: sans-serif;
+    --body-color: black;
+    --body-font: sans-serif;
+    --primary-color:  rgb(184, 203, 255);
+}
+
+h1 {
+    color: var(--header-color);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+#home-header {
+    background-color: var(--primary-color);
+    width: 100%;
+    height: 50vh; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home-header > h1 {
+    font-size: max(5vw, 40px);
+    font-family: var(--header-font);
+}
+
+#home-paragraph {
+    margin: 15vh 0;
+    font-size: max(1.5vw, 20px);
+    font-family: var(--body-font);
+}
+
+#home-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.home-link {
+    text-decoration: underline;
+    font-family: var(--body-font);
+    color: var(--body-color);
+    font-size: max(3vw, 30px);
+}
+
+/* TRAIN STYLES */
+.site-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 6em;
+    background-color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+}
+
+.app-img {
+    width: 3em;
+    height: 3em;
+    background-color: black;
+    margin-left: 1.5em;
+}
+
+.page-title {
+    font-family: sans-serif;
+    font-weight: 600;
+    padding: 0;
+    margin: 0 0 0 1em;
+    
+}
+
+.main-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100vh - 6em);
+}
+
+/* Left side of the web app (feature options that can be selected) */
+.train-body-left {
+    background-color: #FFFFFF;
+    position: relative;
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.feature-option {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+
+    width: 10em;
+    height: 3em;
+
+    margin: 2em 2em;
+
+    border-radius: 0.4em;
+
+    background-color: var(--primary-color);
+
+    box-shadow: 3px 3px 6px 1px #888888;
+
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+}
+
+/* * Right side of the web app (selected train features and btn to start) */
+.train-body-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+    width: 30vw;
+
+    margin: 0;
+    padding: 0;
+
+
+    background-color: #C4C4C4;
+}
+
+.selected-features-list {
+    width: 99%;
+    height: 80%;
+    
+    margin: 0;
+    padding: 0;
+}
+
+.start-train-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    outline: none;
+    border: none;
+
+    width: 60%;
+    height: 3.5em;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1.2em;
+
+    border-radius: 0.4em;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* RESULTS STYLES */
+#results-main {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    height: 100%;
+    width: 100%;
+}
+
+#results-test {
+    width: 50%;
+    min-height: 100vh;
+    background-color: white;
+    padding: 3%;
+}
+
+#results-stats {
+    width: 50%;
+    background-color: grey;
+    min-height: 100vh;
+    padding: 3%;
+}
+
