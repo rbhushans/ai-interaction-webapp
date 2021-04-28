@@ -18,6 +18,7 @@ def train_model():
     #train the model
     params = request.data.decode("utf-8") 
     params = params.split(",")
+    #train model instead of txt file
     filename = ("_").join(params) +".txt"
     file = open(filename, 'w')
     file.write((" ").join(params))
@@ -26,13 +27,15 @@ def train_model():
         return send_file(filename, attachment_filename=filename)
     except Exception as e:
         return str(e)
-    #return the model
 
 @app.route("/test_model", methods=["POST"])
 def test_model():
     #test model
-    model = request.data
-    pass
+    model = request.files['file']
+    if model.filename != '':
+        model.save(model.filename)
+    #do testing with pkl file
+    return filename
 
 @app.errorhandler(404)
 def page_not_found(e):
