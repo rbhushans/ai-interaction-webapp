@@ -8,7 +8,7 @@ rm -rf env
 
 python -m venv env
 
-source env/bin/activate 
+source env/bin/activate   *If on Windows: source env/Scripts/activate
 
 export FLASK_APP=run.py   
 
