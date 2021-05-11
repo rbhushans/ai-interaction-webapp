@@ -17,6 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: sans-serif;
 }
   
 #home-header {
@@ -35,9 +36,18 @@ body {
 }
 
 #home-paragraph {
-    margin: 15vh 0;
-    font-size: max(1.5vw, 20px);
+    font-size: max(1.2vw, 20px);
     font-family: var(--body-font);
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+}
+
+#home-subtitle {
+    text-align: left;
+    font-size: max(1.7vw, 30px);
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 #home-buttons {
@@ -52,7 +62,9 @@ body {
     font-family: var(--body-font);
     color: var(--body-color);
     font-size: max(3vw, 30px);
+    margin-bottom: 20px;
 }
+
 
 /* TRAIN STYLES */
 .site-header {
@@ -125,11 +137,19 @@ body {
     background-color: var(--primary-color);
 
     box-shadow: 3px 3px 6px 1px #888888;
+    padding: 40px;
 
     border: none;
     outline: none;
 
     cursor: pointer;
+}
+
+#feature-instructions {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    font-size: max(1.2vw, 20px);
 }
 
 /* * Right side of the web app (selected train features and btn to start) */
@@ -194,22 +214,70 @@ body {
 #results-main {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
-    height: 100%;
+    justify-content: space-between;
     width: 100%;
+    height: calc(100vh - 6em);
 }
 
 #results-test {
-    width: 50%;
-    min-height: 100vh;
-    background-color: white;
-    padding: 3%;
+    background-color: #FFFFFF;
+    position: relative;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 5px;
 }
 
 #results-stats {
-    width: 50%;
-    background-color: grey;
-    min-height: 100vh;
-    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70vw;
+    margin: 0;
+    padding: 15px;
+    background-color: #C4C4C4;
+    justify-content: space-between;
+}
+
+#results-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#results-features input, #results-features select {
+    width: 100%;
+    margin-bottom: 10%;
+    border: none;
+    border-bottom: black solid;
+    background-color: #e7e7e7;
+    margin-top: 1%;
+}
+
+#results-features label {
+    align-self: flex-start;
+}
+
+#test-persona, #retrain-button {
+    border-radius: 10px;
+    background-color: transparent;
+    border: rgb(0, 21, 80) solid;
+    color: rgb(0, 21, 80);
+    font-size: max(2vw, 20px);
+    padding: 10px;
+}
+
+#retrain-button {
+    justify-self: flex-end;
+    margin-bottom: 20px;
+}
+
+#test-persona:hover, #retrain-button:hover {
+    color: white;
+    background-color: rgb(0, 21, 80);
 }
 

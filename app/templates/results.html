@@ -14,12 +14,60 @@
 
     <main id="results-main">
         <div id="results-test">
-            <h2>TEST</h1>
-            <button id="test-button">Button</button>
+            <div id="results-features">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="0">
+                <label for="sex">Sex</label>
+                <select id="sex" name="sex">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="race">Race</label>
+                <select id="race" name="race">
+                    <option value="caucasian">Caucasian</option>
+                    <option value="african-american">African American</option>
+                    <option value="hispanic">Hispanic</option>
+                    <option value="asian">Asian</option>
+                    <option value="native-american">Native American</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="juv-fel-count">Juvenile Felony Count</label>
+                <input type="number" id="juv-fel-count" name="juv-fel-count" min="0">
+
+                <label for="juv-misdem-count">Juvenile Misdemeanor Count</label>
+                <input type="number" id="juv-misdem-count" name="juv-misdem-count" min="0">
+
+                <label for="juv-other-count">Juvenile Other Count</label>
+                <input type="number" id="juv-other-count" name="juv-other-count" min="0">
+
+                <label for="priors-count">Priors Count</label>
+                <input type="number" id="priors-count" name="priors-count" min="0">
+
+                <label for="charge-deg">Charge Degree</label>
+                <select id="charge-deg" name="charge-deg">
+                    <option value="f1">F1</option>
+                    <option value="f2">F2</option>
+                    <option value="f3">F3</option>
+                    <option value="f5">F5</option>
+                    <option value="f6">F6</option>
+                    <option value="f7">F7</option>
+                    <option value="m1">M1</option>
+                    <option value="m2">M2</option>
+                    <option value="m3">M3</option>
+                </select>
+            </div>
+            <button id="test-persona">Test Persona</button>
         </div>
     
         <div id="results-stats">
             <h2>RESULTS</h2>
+            <h1>ADD GRAPHS AND STATISTICS</h1>
+            <p>Not satisfied with your model's performance? Try choosing a new set of features to include
+                when training the model to see how that affects the model's fairness.
+            </p>
+            <button id="retrain-button" onclick="location.href='train';">Retrain Model</button>
         </div>
     </main>
    
