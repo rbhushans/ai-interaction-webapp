@@ -41,6 +41,7 @@ body {
     padding-left: 10%;
     padding-right: 10%;
     text-align: center;
+    color: rgb(80, 80, 80);
 }
 
 #home-subtitle {
@@ -48,6 +49,7 @@ body {
     font-size: max(1.7vw, 30px);
     padding-left: 10%;
     padding-right: 10%;
+    color: rgb(80, 80, 80);
 }
 
 #home-buttons {
@@ -63,6 +65,10 @@ body {
     color: var(--body-color);
     font-size: max(3vw, 30px);
     margin-bottom: 20px;
+}
+
+.home-link:hover {
+    color: var(--primary-color);
 }
 
 

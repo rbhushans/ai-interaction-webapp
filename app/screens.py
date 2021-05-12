@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template, request, send_file
+from app import model
 
 @app.route("/")
 def index():
@@ -18,15 +19,9 @@ def train_model():
     #train the model
     params = request.data.decode("utf-8") 
     params = params.split(",")
-    #train model instead of txt file
-    filename = ("_").join(params) +".txt"
-    file = open(filename, 'w')
-    file.write((" ").join(params))
-    file.close()
-    try:
-        return send_file(filename, attachment_filename=filename)
-    except Exception as e:
-        return str(e)
+    filename, precision, recall = model.construct_lr_model(params)
+    print("Model created with features", params, "and precision =", precision, " and recall =", recall)
+    return filename + "|" + str(precision) + "|" + str(recall)
 
 @app.route("/test_model", methods=["POST"])
 def test_model():

@@ -12,11 +12,12 @@ function saveData(blob, fileName) // does the same as FileSaver.js
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("test-button").addEventListener("click", function() {
-        console.log("here")
-        let blob = new Blob(localStorage.getItem("model"))
-        console.log("here")
-        saveData(blob, 'model.txt')
+    store = window.localStorage
+    document.getElementById("results-precision").innerText = "Your model's precision is " + store.getItem("precision")
+    document.getElementById("results-recall").innerText = "Your model's recall is" + store.getItem("recall")
+
+    document.getElementById("test-persona").addEventListener("click", function() {
+        //show dialog and make request to test model
     })
 })
     

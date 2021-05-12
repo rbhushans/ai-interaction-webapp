@@ -27,28 +27,24 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         })
     });
-
+    store = window.localStorage
     document.getElementById("start-train-btn").addEventListener('click', function() {
         let items = document.getElementById("selected-features-list").getElementsByTagName("li");
         let data = []
         for(var i = 0; i < items.length; i++){
             if(items[i].innerText != "") data.push(items[i].innerText)
         }
-        let xhr = new XMLHttpRequest(),
-            blob,
-            fileReader = new FileReader();
+        let xhr = new XMLHttpRequest();
         xhr.open('POST', '/train_model');
-        xhr.responseType = "arraybuffer"
         xhr.onreadystatechange = function() { // Call a function when the state changes.
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                blob = new Blob([this.response])
-                fileReader.onload = function(evt) {
-                    let result = evt.target.result;
-                    localStorage.setItem("model", result)
-                    console.log("stored in local storage")
-                    window.location = "results"
-                }
-                fileReader.readAsDataURL(blob)
+                console.log("Received model: " + this.responseText)
+                var data = this.responseText.split("|")
+                store.clear()
+                store.setItem('model', data[0])
+                store.setItem("precision", data[1])
+                store.setItem("recall", data[2])
+                window.location = "results"
             }
         }
         xhr.send(data);
