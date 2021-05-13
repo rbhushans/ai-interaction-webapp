@@ -63,10 +63,25 @@
     
         <div id="results-stats">
             <h2>RESULTS</h2>
+
             <p id="results-precision"></p>
-            <p class="stat-description">Precision is calculated by</p>
+            <div class="stat-description">Precision is calculated by dividing the number of 
+                <div class="term-definition tooltip" id="true-positive">true positives
+                    <p class="tooltiptext">True Positive: The number of individuals who were classified as will recidivate, and actually did.</p>
+                </div> by
+                the total number of true positives and 
+                <div class="term-definition tooltip" id="false-positive">false positives
+                    <p class="tooltiptext">False Positive: The number of individuals who were classified as will recidivate, and did not actually recidivate.</p>
+                </div>.
+            </div>
+
             <p id="results-recall"></p>
-            <p class="stat-description">Recall is calculated by</p>
+            <div class="stat-description">Recall is calculated by dividing the number of 
+                by the total number of true positives and 
+                <div class="term-definition tooltip" id="false-negatives">false negatives
+                    <p class="tooltiptext">False Negative: The number of individuals who were classified as will not recidivate, and actually did.</p>
+                </div>.
+            </div>
             <h1>ADD GRAPHS AND STATISTICS</h1>
             <p>Not satisfied with your model's performance? Try choosing a new set of features to include
                 when training the model to see how that affects the model's fairness.
