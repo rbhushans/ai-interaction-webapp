@@ -9,7 +9,7 @@ from sklearn.linear_model import LogisticRegression
 
 def construct_lr_model(features):
     df = pd.read_csv('data/cox-violent-parsed.csv', low_memory=False)
-    df.drop(df.loc[df['is_recid']==0].index, inplace=True)
+    df.drop(df.loc[df['is_recid']==-1].index, inplace=True)
     whole_df = df [['is_recid', 'age', 'sex', 'race', 'dob', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'c_charge_desc', 'c_charge_degree']]
 
 
