@@ -10,29 +10,44 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon_io/favicon-16x16.png') }}">
     <link rel="manifest" href="/site.webmanifest">
 </head>
-<body>
-    <div id="home-header">
-        <img src="../static/img/TEA Logo.png" style="margin-left:5%">
-        <div id="home-title-container">
-            <h1><span class="home-title">T</span>ransparency and</h1> <br>
-            <h1><span class="home-title">E</span>ducation of</h1> <br>
-            <h1><span class="home-title">A</span>I</h1> 
+<body id="home-body">
+    <div class=home-section id="home-header-cont">
+        <div id="home-header">
+            <img src="../static/img/TEA Logo.png" style="margin-left:5%">
+            <div id="home-title-container">
+                <h1><span class="home-title">T</span>ransparency and</h1> <br>
+                <h1><span class="home-title">E</span>ducation of</h1> <br>
+                <h1><span class="home-title">A</span>rtificial Intelligence</h1> 
+            </div>
+        </div>
+        <img src="../static/img/down_arrow.png" class="down-arrow" id="down-arrow-1" width=50 height=50>
+    </div>
+    
+
+    <div id="home-section-2" class="home-section">
+        <h2 id="home-subtitle">Made to Judge: How much can you trust AI?</h2>
+        <p class="home-paragraph">AI has been becoming more and more commonplace in society and everyday life, 
+            from simple chatbots to facial recognition systems. One of the more consequential applications 
+            of AI is in the American judicial system. More specifically, machine learning models are being 
+            used as decision aids to help judges determine whether or not defendants are predicted to reoffend, 
+            influencing their decisions on bail and custody for the defendant. With such high stakes on the line, 
+            how much trust, as a society, can we put on these technologies? To gauge that, we must first understand 
+            how these models work. This app will walk you through creating your own ML model, and then see how it 
+            interacts with people of different backgrounds.
+        </p>
+        <img src="../static/img/down_arrow.png" class="down-arrow" id="down-arrow-2" width=50 height=50>
+    </div>
+    
+    <div id="home-section-3" class="home-section">
+        <p class="home-paragraph">Ready to get started? Select 'Basic Tutorial' for an intro on building a simple machine learning model.
+            Select 'Advanced Mode' to choose what type of model you would like to build, and have more control over 
+            the model you create.
+        </p>
+        <div id="home-buttons">
+            <a class="home-link" href="train">Basic Tutorial</a>
+            <a class="home-link" href="404">Advanced Mode</a>
         </div>
     </div>
-    <h2 id="home-subtitle">Made to Judge: How much can you trust AI?</h2>
-    <p id="home-paragraph">AI has been becoming more and more commonplace in society and everyday life, 
-        from simple chatbots to facial recognition systems. One of the more consequential applications 
-        of AI is in the American judicial system. More specifically, machine learning models are being 
-        used as decision aids to help judges determine whether or not defendants are predicted to reoffend, 
-        influencing their decisions on bail and custody for the defendant. With such high stakes on the line, 
-        how much trust, as a society, can we put on these technologies? To gauge that, we must first understand 
-        how these models work. This app will walk you through creating your own ML model, and then see how it 
-        interacts with different types of people.
-    </p>
-
-    <div id="home-buttons">
-        <a class="home-link" href="train">Basic Tutorial</a>
-        <a class="home-link" href="404">Advanced Mode</a>
-    </div>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 </body>
 </html>

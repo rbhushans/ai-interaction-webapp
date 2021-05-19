@@ -4,7 +4,7 @@
     --header-font: sans-serif;
     --body-color: black;
     --body-font: sans-serif;
-    --primary-color:  rgb(184, 203, 255);
+    --primary-color:  rgb(168, 216, 255);
 }
 
 h1 {
@@ -23,11 +23,54 @@ body {
 #home-header {
     background-color: var(--primary-color);
     width: 100%;
-    height: 50vh; 
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    text-align: left;
+    margin-top: 10%;
+}
+
+@media screen and (max-width: 900px){
+    #home-header {
+        flex-direction: column;
+    }
+
+    #home-header > img {
+        margin-top: 50px;
+    }
+}
+
+#home-body {
+    background-color: var(--primary-color);
+}
+
+.home-section {
+    height: 100vh;
+    width: 100%;
+}
+
+#home-section-2 {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#home-section-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#home-header-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #home-header h1 {
@@ -35,15 +78,16 @@ body {
     font-family: var(--header-font);
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
-#home-paragraph {
-    font-size: max(1.2vw, 20px);
+.home-paragraph {
+    font-size: max(2vw, 20px);
     font-family: var(--body-font);
     padding-left: 10%;
     padding-right: 10%;
     text-align: center;
-    color: rgb(80, 80, 80);
+    color: black;
 }
 
 .home-title {
@@ -58,12 +102,16 @@ body {
     margin-left: 5%;
 }
 
+.down-arrow {
+    margin-top: 5%;
+}
+
 #home-subtitle {
     text-align: left;
     font-size: max(1.7vw, 30px);
     padding-left: 10%;
     padding-right: 10%;
-    color: rgb(80, 80, 80);
+    color: black;
 }
 
 #home-buttons {
@@ -82,7 +130,7 @@ body {
 }
 
 .home-link:hover {
-    color: var(--primary-color);
+    color: white;
 }
 
 
@@ -110,6 +158,7 @@ body {
     width: 6em;
     height: 6em;
     margin-left: 1.5em;
+    cursor: pointer;
 }
 
 .page-title {
@@ -119,6 +168,7 @@ body {
     padding: 0;
     margin-left: 30px;
     margin-top: 70px;
+    cursor: pointer;
 }
 
 .main-body {
