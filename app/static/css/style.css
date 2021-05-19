@@ -27,12 +27,14 @@ body {
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-#home-header > h1 {
-    font-size: max(5vw, 40px);
+#home-header h1 {
+    font-size: max(5vw, 30px);
     font-family: var(--header-font);
+    padding: 0;
+    margin: 0;
 }
 
 #home-paragraph {
@@ -42,6 +44,18 @@ body {
     padding-right: 10%;
     text-align: center;
     color: rgb(80, 80, 80);
+}
+
+.home-title {
+    color: rgb(148, 53, 53);
+    font-size: max(6vw, 30px);
+}
+
+#home-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5%;
 }
 
 #home-subtitle {
@@ -79,7 +93,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 6em;
+    height: 7em;
     background-color: var(--primary-color);
     margin: 0;
     padding: 0;
@@ -92,12 +106,19 @@ body {
     margin-left: 1.5em;
 }
 
+.header-logo {
+    width: 6em;
+    height: 6em;
+    margin-left: 1.5em;
+}
+
 .page-title {
     font-family: sans-serif;
+    font-size: 60px;
     font-weight: 600;
     padding: 0;
-    margin: 0 0 0 1em;
-    
+    margin-left: 30px;
+    margin-top: 70px;
 }
 
 .main-body {

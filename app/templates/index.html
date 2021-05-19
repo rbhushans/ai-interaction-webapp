@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon_io/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon_io/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon_io/favicon-16x16.png') }}">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
     <div id="home-header">
-        <h1>TEA: Transparency and Education of AI</h1>
+        <img src="../static/img/TEA Logo.png" style="margin-left:5%">
+        <div id="home-title-container">
+            <h1><span class="home-title">T</span>ransparency and</h1> <br>
+            <h1><span class="home-title">E</span>ducation of</h1> <br>
+            <h1><span class="home-title">A</span>I</h1> 
+        </div>
     </div>
     <h2 id="home-subtitle">Made to Judge: How much can you trust AI?</h2>
     <p id="home-paragraph">AI has been becoming more and more commonplace in society and everyday life, 
