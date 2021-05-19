@@ -8,8 +8,7 @@ rm -rf env
 
 python -m venv env
 
-source env/bin/activate && export FLASK_APP=run.py && export FLASK_ENV=development
-
+source env/bin/activate && export FLASK_APP=run.py && export FLASK_ENV=development *If on Windows: source env/Scripts/activate && export FLASK_APP=run.py && export FLASK_ENV=development
 * Install dependencies:
 
 pip install --upgrade pip
