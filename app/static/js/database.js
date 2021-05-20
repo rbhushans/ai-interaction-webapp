@@ -108,9 +108,12 @@ sendModelBtn.addEventListener("click", (evt) => {
         modelBlob = event.target.result;
 
         var data = new FormData();
-        data.append('file', modelBlob, "blob");
+        var fileOfBlob = new File([modelBlob], 'model.pkl');
+        data.append("upload", fileOfBlob);
 
-        console.log("Model Blob Retrieved from browser database: " + data);
+        //var data = new FormData();
+        //data.append('blob', modelBlob, "modelBlob.pkl");
+        //console.log("Model Blob Retrieved from browser database: " + data);
         fetch("/database/model", {method: "POST", body: data});
 
 

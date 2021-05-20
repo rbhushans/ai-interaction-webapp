@@ -1,13 +1,14 @@
 import pandas as pd 
 import sklearn 
 import pickle
+import os
 
 from sklearn import preprocessing 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
 
-def construct_lr_model(features):
+def construct_lr_model(features, filename_str):
     df = pd.read_csv('data/cox-violent-parsed.csv', low_memory=False)
     df.drop(df.loc[df['is_recid']==-1].index, inplace=True)
     whole_df = df [['is_recid', 'age', 'sex', 'race', 'dob', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'c_charge_desc', 'c_charge_degree']]
@@ -62,7 +63,7 @@ def construct_lr_model(features):
     precision = precision_score(y_validation, y_pred)
     recall = recall_score(y_validation, y_pred)
 
-    filename = 'models/model_' + str(features)+ '.pkl'
+    filename = 'models_users/model_' + filename_str + '.pkl'
     outfile = open(filename, 'wb')
     pickle.dump(model, outfile)
     outfile.close()
