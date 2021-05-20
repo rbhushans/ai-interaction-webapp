@@ -6,4 +6,4 @@ instance/
 .coverage
 .DStore
 env/
-*.pkl
+models_users/*.pkl
