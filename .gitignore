@@ -6,3 +6,4 @@ instance/
 .coverage
 .DStore
 env/
+models_users/*
