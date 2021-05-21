@@ -54,21 +54,25 @@ def test_model():
     #model = request.files['file']
     #if model.filename != '':
     #    model.save(model.filename)
+    params = request.data.decode("utf-8") 
+    params = params.split(",")
+    #order of params is
+    #age, juv fel count, juv misd count, juv other count, 
+    #priors count, sex, race, charge degree
     if 'file_name' in session:
         # Send model into test
         # Retrieve model by doing following:
-        # temp_file = open(session['file_name'], 'rb')
-        # modelFile = pickle.load(temp_file)
-        # temp_file.close()
+        temp_file = open(session['file_name'], 'rb')
+        modelFile = pickle.load(temp_file)
+        temp_file.close()
+        print("OH2", OH)
+        pred, conf = model.test_lr_model(modelFile, session['file_name'], params, OH)
         # Then use modelFile as a parameter to the model testing 
-        print(session['file_name'])
-        return session['file_name']
+        print(session['file_name'], "predicts", pred, "with confidence of", conf)
+        return pred + "|" + conf
     else:
         # No model trained yet, send error
         return 404
-
-    #do testing with pkl file
-    return filename
 
 @app.errorhandler(404)
 def page_not_found(e):
