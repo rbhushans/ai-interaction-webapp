@@ -1,9 +1,12 @@
 import os
 import time
-import asyncio
 
 def cleaner():
     directory = "models_users/"
+    # First check if the directory exists. If not, create it
+    if not (os.path.isdir(directory)):
+        os.mkdir(directory)
+
     while True: # Run indefinitely to keep storage usage minimal
         files = os.listdir(directory)
         curr_time = time.time()
