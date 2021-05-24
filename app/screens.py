@@ -27,7 +27,15 @@ def input():
 @app.route("/results")
 def results():
     if 'file_name' in session:
-        temp_file = open(session['file_name'], 'rb')
+        temp_file = open(session['file_name'] + ".pkl", 'rb')
+        temp_file.read(1) # Just to change access time for cleaner process
+        temp_file.close()
+
+        temp_file = open(session['file_name'] + "_enc.pkl", 'rb')
+        temp_file.read(1) # Just to change access time for cleaner process
+        temp_file.close()
+
+        temp_file = open(session['file_name'] + "_scaler.pkl", 'rb')
         temp_file.read(1) # Just to change access time for cleaner process
         temp_file.close()
     return render_template("results.html")
@@ -43,33 +51,34 @@ def train_model():
 
     filename, precision, recall = model.construct_lr_model(params, result_str)
     print("Model created with features", params, "and precision =", precision, " and recall =", recall)
-    # ! Session database test
+    # model = filename + ".pkl", encoder = filename + "_enc.pkl" 
     session['file_name'] = filename # Save to session of user (locally on server)
 
     return filename + "|" + str(precision) + "|" + str(recall)
 
 @app.route("/test_model", methods=["POST"])
 def test_model():
-    #test model
-    #model = request.files['file']
-    #if model.filename != '':
-    #    model.save(model.filename)
     params = request.data.decode("utf-8") 
     params = params.split(",")
     #order of params is
     #age, juv fel count, juv misd count, juv other count, 
     #priors count, sex, race, charge degree
     if 'file_name' in session:
-        # Send model into test
-        # Retrieve model by doing following:
-        temp_file = open(session['file_name'], 'rb')
+        temp_file = open(session['file_name'] + ".pkl", 'rb')
         modelFile = pickle.load(temp_file)
         temp_file.close()
-        print("OH2", OH)
-        pred, conf = model.test_lr_model(modelFile, session['file_name'], params, OH)
-        # Then use modelFile as a parameter to the model testing 
+
+        temp_file = open(session['file_name'] + "_enc.pkl", 'rb')
+        encFile = pickle.load(temp_file)
+        temp_file.close()
+
+        temp_file = open(session['file_name'] + "_scaler.pkl", 'rb')
+        scalerFile = pickle.load(temp_file)
+        temp_file.close()
+        pred, conf = model.test_lr_model(modelFile, encFile, scalerFile, session['file_name'], params)
+
         print(session['file_name'], "predicts", pred, "with confidence of", conf)
-        return pred + "|" + conf
+        return str(pred) + "|" + str(conf)
     else:
         # No model trained yet, send error
         return 404
