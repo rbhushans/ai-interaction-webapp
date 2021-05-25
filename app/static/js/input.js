@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByClassName("feature-option")
     Array.prototype.forEach.call(buttons, function(item) {
         item.addEventListener('click', function(){
@@ -49,4 +49,74 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         xhr.send(data);
     })
-})
+    
+    //Attach popup dialog on mouseover with info about the feature
+    featureOptionBtns = document.getElementsByClassName('feature-option');
+    for (var i = 0; i < featureOptionBtns.length; i++) {
+        currBtn = featureOptionBtns.item(i);
+        currBtnTxt = currBtn.innerText;
+
+        createAndApplyInfoBox(currBtn, currBtnTxt);
+    }
+
+
+}) //End of on 'document loaded' event
+
+
+/**
+ * Takes in an HTML element and Text within it to create a popup dialog with info.
+ * 
+ * @param {HTML Element} btnElem 
+ * @param {String} btnTxt 
+ */
+function createAndApplyInfoBox(btnElem, btnTxt) {
+    var originalText = "Machine learning models are created by analyzing multiple categories of information\ncalled features. Feature selection is performed by the humans that are responsible\nfor coding the model. Please select the features you would like to train your model with."
+    var topTextBox = document.getElementById("feature-instructions");
+
+    var dialogText = "";
+
+    if (btnTxt.localeCompare("Age") == 0) {
+        dialogText = "Age of each individual"
+    }
+
+    if (btnTxt.localeCompare("Sex") == 0) {
+        dialogText = "Biological sex of each individual"
+    }
+
+    if (btnTxt.localeCompare("Race") == 0) {
+        dialogText = "Race of each individual as determined on first infraction"
+    }
+    
+    if (btnTxt.localeCompare("Juvenile Felony Count") == 0) {
+        dialogText = "Number of felonies received as a minor (under 18 years old)"
+    }
+
+    if (btnTxt.localeCompare("Juvenile Misdemeanor Count") == 0) {
+        dialogText = "Number of misdemeanors received as a minor (under 18 years old)"
+    }
+
+    if (btnTxt.localeCompare("Juvenile Other Count") == 0) {
+        dialogText = "Number of other crimes/charges not including misdemeanors and felonies received as a minor (under 18 years old)"
+    }
+
+    if (btnTxt.localeCompare("Priors Count") == 0) {
+        dialogText = "Number of a criminal defendant's previous record of criminal charges, convictions, or other judicial disposal of criminal cases (such as probation, dismissal or acquittal)."
+    }
+    
+    if (btnTxt.localeCompare("Charge Degree") == 0) {
+        dialogText = "Level of severity of the criminal charge brought against an individual"
+    }
+
+    // Add to button
+    btnElem.addEventListener('mouseover', () => {
+        console.log("MouseOver: " + btnTxt + dialogText);
+        //infoBox.style.display = "block";
+        topTextBox.innerText = dialogText;
+    });
+
+    btnElem.addEventListener('mouseout', () => {
+        console.log("MouseOut: " + btnTxt + dialogText);
+        //infoBox.style.display = "none";
+        topTextBox.innerText = originalText;
+    })
+}

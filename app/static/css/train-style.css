@@ -93,6 +93,10 @@ body {
     cursor: pointer;
 }
 
+.feature-option:hover {
+    background-color: rgb(131, 157, 228);
+}
+
 /* * Right side of the web app (selected train features and btn to start) */
 .train-body-right {
     display: flex;

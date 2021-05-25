@@ -222,12 +222,19 @@ body {
     cursor: pointer;
 }
 
+.feature-option:hover {
+    background-color: rgb(131, 157, 228);
+}
+
 #feature-instructions {
     padding-left: 5%;
     padding-right: 5%;
     text-align: center;
     font-size: max(1.2vw, 20px);
+    height: 4em;
+    width: 100%;
 }
+
 
 /* * Right side of the web app (selected train features and btn to start) */
 .train-body-right {
