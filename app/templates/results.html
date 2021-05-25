@@ -93,6 +93,23 @@
             <button id="retrain-button" onclick="location.href='train';">Retrain Model</button>
         </div>
     </main>
+
+    <dialog id="results-dialog">
+        <form id="results-dialog-form" method="dialog">
+            <img src="../static/img/TEA Logo.png">
+            <div id=results-container>
+                <h2 id="results-dialog-h2">Persona Prediction</h2>
+                <p id="results-dialog-p1">Your trained model predicted that this created persona will 
+                    <span id="results-pred"></span>. The model had a <span id="results-conf"></span>% confidence
+                    in its prediction.
+                </p>
+                <p id="results-dialog-p1">
+                    Try creating a new persona to see how it affects the prediction, or try retraining your model!
+                </p>
+            </div>
+            <img id="results-close" src="../static/img/close_button.png" width=30 height=30>
+        </form>
+    </dialog>
    
     <script src="{{ url_for('static', filename='js/results.js') }}"></script>
 </body>

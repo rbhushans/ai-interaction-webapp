@@ -390,3 +390,24 @@ body {
   .tooltip:hover .tooltiptext {
     visibility: visible;
   }
+
+  #results-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  #results-dialog-form {
+      display: flex;
+      flex-direction: row;
+  }
+
+  .recid-pred {
+      color: rgb(122, 0, 0);
+      font-weight: bold;
+  }
+
+  .not-recid-pred {
+    color: rgb(1, 112, 10);
+    font-weight: bold;
+}
