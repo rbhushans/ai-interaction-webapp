@@ -26,7 +26,10 @@
 
     <div id="home-section-2" class="home-section">
         <h2 id="home-subtitle">Made to Judge: How much can you trust AI?</h2>
-        <p class="home-paragraph">AI has been becoming more and more commonplace in society and everyday life, 
+        <div class="home-paragraph">
+            <div class="term-definition tooltip" id="home-ai">AI
+                <p class="tooltiptext">What even is Artificial Intelligence? Click to learn more!</p>
+            </div> has been becoming more and more commonplace in society and everyday life, 
             from simple chatbots to facial recognition systems. One of the more consequential applications 
             of AI is in the American judicial system. More specifically, machine learning models are being 
             used as decision aids to help judges determine whether or not defendants are predicted to reoffend, 
@@ -34,7 +37,7 @@
             how much trust, as a society, can we put on these technologies? To gauge that, we must first understand 
             how these models work. This app will walk you through creating your own ML model, and then see how it 
             interacts with people of different backgrounds.
-        </p>
+        </div>
         <img src="../static/img/down_arrow.png" class="down-arrow" id="down-arrow-2" width=50 height=50>
     </div>
     
@@ -49,5 +52,15 @@
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <dialog id="home-dialog">
+        <form id="results-dialog-form" method="dialog">
+            <img id="home-dialog-img" height=300 width=300>
+            <div id="results-container">
+                <h2 id="home-dialog-header"></h2>
+                <p id="home-dialog-body"></p>
+            </div>
+            <img id="home-close" src="../static/img/close_button.png" width=30 height=30>
+        </form>
+    </dialog>
 </body>
 </html>

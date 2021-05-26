@@ -70,19 +70,19 @@
 
             <p id="results-precision"></p>
             <div class="stat-description">Precision is calculated by dividing the number of 
-                <div class="term-definition tooltip" id="true-positive">true positives
+                <div class="term-definition tooltip" id="true-positive">True Positives
                     <p class="tooltiptext">True Positive: The number of individuals who were classified as will recidivate, and actually did.</p>
                 </div> by
-                the total number of true positives and 
-                <div class="term-definition tooltip" id="false-positive">false positives
+                the total number of True Positives and 
+                <div class="term-definition tooltip" id="false-positive">False Positives
                     <p class="tooltiptext">False Positive: The number of individuals who were classified as will recidivate, and did not actually recidivate.</p>
                 </div>.
             </div>
 
             <p id="results-recall"></p>
-            <div class="stat-description">Recall is calculated by dividing the number of 
-                by the total number of true positives and 
-                <div class="term-definition tooltip" id="false-negatives">false negatives
+            <div class="stat-description">Recall is calculated by dividing the number of True Positives
+                by the total number of True Positives and 
+                <div class="term-definition tooltip" id="false-negatives">False Negatives
                     <p class="tooltiptext">False Negative: The number of individuals who were classified as will not recidivate, and actually did.</p>
                 </div>.
             </div>
@@ -96,14 +96,14 @@
 
     <dialog id="results-dialog">
         <form id="results-dialog-form" method="dialog">
-            <img src="../static/img/TEA Logo.png">
+            <img id="results-dialog-img" src="" height=400 width=400>
             <div id=results-container>
                 <h2 id="results-dialog-h2">Persona Prediction</h2>
                 <p id="results-dialog-p1">Your trained model predicted that this created persona will 
-                    <span id="results-pred"></span>. The model had a <span id="results-conf"></span>% confidence
+                    <span id="results-pred"></span>. The model had a <span id="results-conf"></span> confidence
                     in its prediction.
                 </p>
-                <p id="results-dialog-p1">
+                <p id="results-dialog-p2">
                     Try creating a new persona to see how it affects the prediction, or try retraining your model!
                 </p>
             </div>

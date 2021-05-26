@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
                 
                 conf = conf * 100
+                conf = conf.toFixed(3)
 
                 console.log(pred)
                 console.log(conf)
@@ -67,13 +68,17 @@ document.addEventListener("DOMContentLoaded", function(){
                 if(pred == 0){
                     document.getElementById("results-pred").innerText = "not recidivate"
                     document.getElementById("results-pred").setAttribute("class", "not-recid-pred")
+                    document.getElementById("results-conf").setAttribute("class", "not-recid-pred")
+                    document.getElementById("results-dialog-img").setAttribute("src", "../static/img/logo_not_recid.png")
                 }else{
                     document.getElementById("results-pred").innerText = "recidivate"
                     document.getElementById("results-pred").setAttribute("class", "recid-pred")
+                    document.getElementById("results-conf").setAttribute("class", "recid-pred")
+                    document.getElementById("results-dialog-img").setAttribute("src", "../static/img/logo_recid.png")
                 }
                 
 
-                document.getElementById("results-conf").innerText = conf
+                document.getElementById("results-conf").innerText = conf + "%"
                 dialog.showModal()
             }
         }

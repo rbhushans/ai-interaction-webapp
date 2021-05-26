@@ -134,6 +134,10 @@ body {
     color: white;
 }
 
+#home-dialog{
+    width: 80vw;
+}
+
 
 /* TRAIN STYLES */
 .site-header {
@@ -380,46 +384,81 @@ body {
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  }
+    border-bottom: 1px dotted black; 
+}
   
   /* Tooltip text */
-  .tooltip .tooltiptext {
+.tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 220px;
     background-color: black;
     color: #fff;
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
-  }
+}
   
   /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext {
     visibility: visible;
-  }
+}
 
-  #results-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-  }
+#results-dialog{
+    width: 80vw;
+}
 
-  #results-dialog-form {
-      display: flex;
-      flex-direction: row;
-  }
+#results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 3%;
+}
 
-  .recid-pred {
-      color: rgb(122, 0, 0);
-      font-weight: bold;
-  }
+#results-dialog-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-  .not-recid-pred {
+.recid-pred {
+    color: rgb(122, 0, 0);
+    font-weight: bold;
+    border-bottom: 1px solid rgb(122, 0, 0);
+}
+
+.not-recid-pred {
     color: rgb(1, 112, 10);
     font-weight: bold;
+    border-bottom: 1px solid rgb(1, 112, 10);
+}
+
+#results-dialog-h2 {
+    font-size: 50px;
+}
+
+#results-dialog-p1, #results-dialog-p2 {
+    font-size: 20px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.438)
+}
+
+#results-dialog-img {
+    width: 30vw;
+    height: 30vw;
+    align-self: center;
+}
+
+#home-dialog-img {
+    width: 30vw;
+    height: 30vw;
+    align-self: center;
+}
+
+dialog {
+    border: none;
+    border-radius: 10px;
 }
