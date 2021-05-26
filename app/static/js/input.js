@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             if(inList != -1){
                 fList.removeChild(fList.childNodes[inList])
+                this.classList.remove("feature-selected")
             }else{
                 let item = document.createElement("li");
                 item.appendChild(document.createTextNode(val))
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.appendChild(input)
                 item.setAttribute("class", "selected-features-item")
                 fList.appendChild(item)
+                this.setAttribute("class", "feature-selected feature-option")
             }
         })
     });

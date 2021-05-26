@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("results-recall").innerText = "Your model's recall is " + store.getItem("recall")
 
     document.getElementById("results-close").addEventListener('click', function() {
-        console.log("clicked")
         dialog.close()
     })
 
@@ -29,10 +28,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
         let data = []
         for(var i = 0; i < input_items.length; i++){
-            data.push(input_items[i].value)
+            if(input_items[i].value == ''){
+                data.push(0)
+            }else{
+                data.push(input_items[i].value)
+            }
+            
         }
         for(var i = 0; i < select_items.length; i++){
-            data.push(select_items[i].value)
+            if(select_items[i].value == ''){
+                data.push('Not Specified')
+            }else{
+                data.push(select_items[i].value)
+            }
         }
 
         let xhr = new XMLHttpRequest();
@@ -45,7 +53,12 @@ document.addEventListener("DOMContentLoaded", function(){
                 let pred = data[0][2]
                 let conf = data[1]
                 conf = conf.split(" ")[pred]
-                conf = conf.substring(0, conf.length-1)
+                if(pred == 1){
+                    conf = conf.substring(0, conf.length-1)
+                }else{
+                    conf = conf.substring(1, conf.length)
+                }
+                
                 conf = conf * 100
 
                 console.log(pred)

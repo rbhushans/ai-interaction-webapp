@@ -227,6 +227,10 @@ body {
     background-color: rgb(131, 157, 228);
 }
 
+.feature-selected {
+    background-color: rgb(131, 157, 228);
+}
+
 #feature-instructions {
     padding-left: 5%;
     padding-right: 5%;

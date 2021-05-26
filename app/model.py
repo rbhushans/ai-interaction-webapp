@@ -99,6 +99,7 @@ def test_lr_model(model, enc, scaler, filename, features):
     str_list = []
     num_list = []
     for f in used_features:
+
         if f in features_num:
             selected_num_features.append(f)
         elif f in features_cat:
