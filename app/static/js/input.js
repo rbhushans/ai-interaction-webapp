@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         xhr.send(data);
+        startLoadingAnimation(document.getElementById("start-train-btn"));
     })
     
     //Attach popup dialog on mouseover with info about the feature
@@ -109,14 +110,24 @@ function createAndApplyInfoBox(btnElem, btnTxt) {
 
     // Add to button
     btnElem.addEventListener('mouseover', () => {
-        console.log("MouseOver: " + btnTxt + dialogText);
-        //infoBox.style.display = "block";
         topTextBox.innerText = dialogText;
     });
 
     btnElem.addEventListener('mouseout', () => {
-        console.log("MouseOut: " + btnTxt + dialogText);
-        //infoBox.style.display = "none";
         topTextBox.innerText = originalText;
     })
+}
+
+
+/**
+ * Attach loading animation to the button.
+ * 
+ * @param {HTML Element} btnElem
+ */
+function startLoadingAnimation(btnElem) {
+    loadingElem = document.createElement("i");
+    loadingElem.classList.add("fa");
+    loadingElem.classList.add("fa-circle-o-notch");
+    loadingElem.classList.add("fa-spin");
+    btnElem.appendChild(loadingElem);
 }
