@@ -242,8 +242,42 @@ body {
     font-size: max(1.2vw, 20px);
     height: 4em;
     width: 100%;
+    margin-bottom: 0;
 }
 
+#warning-box {
+    color: red;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    font-size: max(1.2vw, 20px);
+    height: 4em;
+    width: 100%;
+}
+
+#feature-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: space-between;
+}
+
+@media screen and (max-width: 600px){
+    .feature-option {
+        width: 7em;
+        height: 1em;
+        margin: 5px;
+    }
+
+    #feature-buttons {
+        margin-top: 20px;
+    }
+
+    #feature-instructions, #warning-box {
+        font-size: 15px;
+    }
+}
 
 /* * Right side of the web app (selected train features and btn to start) */
 .train-body-right {

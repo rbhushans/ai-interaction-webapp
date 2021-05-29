@@ -49,12 +49,12 @@ def train_model():
     letters = string.ascii_letters
     result_str = ''.join(random.choice(letters) for i in range(32))
 
-    filename, precision, recall = model.construct_lr_model(params, result_str)
-    print("Model created with features", params, "and precision =", precision, " and recall =", recall)
+    filename, precision, recall, coef = model.construct_lr_model(params, result_str)
+    print("Model created with features", params, "and precision =", precision, "and recall =", recall, "and coefficients =", coef)
     # model = filename + ".pkl", encoder = filename + "_enc.pkl" 
     session['file_name'] = filename # Save to session of user (locally on server)
 
-    return filename + "|" + str(precision) + "|" + str(recall)
+    return filename + "|" + str(precision) + "|" + str(recall) + "|" + str(coef)
 
 @app.route("/test_model", methods=["POST"])
 def test_model():

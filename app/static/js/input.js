@@ -75,19 +75,25 @@ document.addEventListener("DOMContentLoaded", function() {
 function createAndApplyInfoBox(btnElem, btnTxt) {
     var originalText = "Machine learning models are created by analyzing multiple categories of information\ncalled features. Feature selection is performed by the humans that are responsible\nfor coding the model. Please select the features you would like to train your model with."
     var topTextBox = document.getElementById("feature-instructions");
+    var warningBox = document.getElementById("warning-box");
+    console.log(warningBox)
 
     var dialogText = "";
+    let warningText = "";
 
     if (btnTxt.localeCompare("Age") == 0) {
         dialogText = "Age of each individual"
+        warningText = "NOTE: Age can often be a problematic feature to include in models, and can introduce bias into the model. Are you sure you want to select Age?"
     }
 
     if (btnTxt.localeCompare("Sex") == 0) {
         dialogText = "Biological sex of each individual"
+        warningText = "NOTE: Sex can often be a problematic feature to include in models, and can introduce bias into the model. Are you sure you want to select Sex?"
     }
 
     if (btnTxt.localeCompare("Race") == 0) {
         dialogText = "Race of each individual as determined on first infraction"
+        warningText = "NOTE: Race can often be a problematic feature to include in models, and can introduce bias into the model. Are you sure you want to select Race?"
     }
     
     if (btnTxt.localeCompare("Juvenile Felony Count") == 0) {
@@ -110,13 +116,17 @@ function createAndApplyInfoBox(btnElem, btnTxt) {
         dialogText = "Level of severity of the criminal charge brought against an individual"
     }
 
+    warningText = document.createTextNode(warningText);
+
     // Add to button
     btnElem.addEventListener('mouseover', () => {
         topTextBox.innerText = dialogText;
+        warningBox.appendChild(warningText);
     });
 
     btnElem.addEventListener('mouseout', () => {
         topTextBox.innerText = originalText;
+        warningBox.innerText = "";
     })
 }
 

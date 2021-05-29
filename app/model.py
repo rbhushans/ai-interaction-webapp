@@ -70,6 +70,9 @@ def construct_lr_model(features, filename_str):
     y_pred = model.predict(x_validation)
     precision = precision_score(y_validation, y_pred, pos_label='1')
     recall = recall_score(y_validation, y_pred, pos_label='1')
+    coef = model.coef_[0]
+    coef = [abs(number) for number in coef]
+    coef = sorted(coef)
 
     filename= 'models_users/model&' + "&".join(selected_num_features) + "&" + "&".join(selected_cat_features) + "&" + filename_str 
 
@@ -84,7 +87,7 @@ def construct_lr_model(features, filename_str):
     outfile = open(filename + '_scaler.pkl', 'wb')
     pickle.dump(scaler, outfile)
     outfile.close()
-    return filename, precision, recall
+    return filename, precision, recall, coef
 
 
 def test_lr_model(model, enc, scaler, filename, features):
