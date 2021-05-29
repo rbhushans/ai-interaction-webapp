@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function(){
     rec = Number(store.getItem("recall"))
     prec = prec.toFixed(3)
     rec = rec.toFixed(3)
-    document.getElementById("results-precision").innerText = "Your model's precision is " + prec
-    document.getElementById("results-recall").innerText = "Your model's recall is " + rec
+    // document.getElementById("results-precision").innerText = "Your model's precision is " + prec
+    // document.getElementById("results-recall").innerText = "Your model's recall is " + rec
 
     document.getElementById("results-close").addEventListener('click', function() {
         dialog.close()

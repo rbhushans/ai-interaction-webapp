@@ -338,8 +338,7 @@ body {
 .results-quad-div {
     position: relative;
     width: 50%;
-    height: 50%;
-
+    height: 40%;
 }
 
 #results-features {
@@ -415,6 +414,10 @@ body {
 
 #results-dialog{
     width: 80vw;
+}
+
+#results-close, #home-close {
+    cursor: pointer;
 }
 
 #results-container {
