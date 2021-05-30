@@ -131,7 +131,7 @@ body {
     text-align: center;
     border-radius: 5px;
 
-    background-color: white;
+    color: white;
     width: 5em;
     height: 2em;
 
@@ -141,8 +141,7 @@ body {
 }
 
 .home-link:hover {
-    color: white;
-    background-color: #626567;
+    color: #626567;
 }
 
 #home-dialog{

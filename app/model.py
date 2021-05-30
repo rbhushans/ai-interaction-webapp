@@ -15,6 +15,7 @@ features_cat = ['sex', 'race', 'dob', 'c_charge_desc', 'c_charge_degree']
 def construct_lr_model(features, filename_str):
     df = pd.read_csv('data/cox-violent-parsed.csv', low_memory=False)
     df.drop(df.loc[df['is_recid']==-1].index, inplace=True)
+    df = df.reset_index()
     df = df.astype(str).apply(lambda x: x.str.lower())
     whole_df = df [['is_recid', 'age', 'sex', 'race', 'dob', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'c_charge_desc', 'c_charge_degree']]
 
@@ -48,17 +49,22 @@ def construct_lr_model(features, filename_str):
     X_cat = df[selected_cat_features]
     X_cat = X_cat.fillna('Not Specified')
     X_num = df[selected_num_features]
-
     enc = preprocessing.OneHotEncoder()
-    print("Category Headers", X_cat.head(2))
-    enc.fit(X_cat) 
-    one_hot = enc.transform(X_cat) 
-    X_cat_proc = pd.DataFrame(one_hot.toarray(), columns=enc.get_feature_names())
-
     scaler = preprocessing.StandardScaler()
-    scaler.fit(X_num)
-    scaled = scaler.transform(X_num)
-    X_num_proc = pd.DataFrame(scaled, columns=selected_num_features)
+
+    if selected_cat_features != []:
+        enc.fit(X_cat) 
+        one_hot = enc.transform(X_cat) 
+        X_cat_proc = pd.DataFrame(one_hot.toarray(), columns=enc.get_feature_names())
+    else:
+        X_cat_proc = pd.DataFrame()
+
+    if selected_num_features != []:
+        scaler.fit(X_num)
+        scaled = scaler.transform(X_num)
+        X_num_proc = pd.DataFrame(scaled, columns=selected_num_features)
+    else:
+        X_num_proc = pd.DataFrame()
     X = pd.concat([X_num_proc, X_cat_proc], axis=1, sort=False)
     print(X.columns.values)
     X = X.fillna(0) # remove NaN values
@@ -119,7 +125,10 @@ def test_lr_model(model, enc, scaler, filename, features):
         elif f == "priors_count":
             num_list.append(int(features[4]))
         elif f == "sex":
-            str_list.append(features[5])
+            if features[5] == "other":
+                str_list.append("Not Specified")
+            else:
+                str_list.append(features[5])
         elif f == "race":
             str_list.append(features[6])
         elif f == "c_charge_degree":
@@ -131,11 +140,17 @@ def test_lr_model(model, enc, scaler, filename, features):
     str_df = pd.DataFrame([str_list])
     str_df.columns = selected_cat_features
 
-    one_hot = enc.transform(str_df)
-    X_cat_proc = pd.DataFrame(one_hot.toarray(), columns=enc.get_feature_names())
+    if selected_cat_features != []:
+        one_hot = enc.transform(str_df)
+        X_cat_proc = pd.DataFrame(one_hot.toarray(), columns=enc.get_feature_names())
+    else:
+        X_cat_proc = pd.DataFrame()
 
-    scaled = scaler.transform(num_df)
-    X_num_proc = pd.DataFrame(scaled, columns=selected_num_features)
+    if selected_num_features != []:
+        scaled = scaler.transform(num_df)
+        X_num_proc = pd.DataFrame(scaled, columns=selected_num_features)
+    else:
+        X_num_proc = pd.DataFrame()
 
     X = pd.concat([X_num_proc, X_cat_proc], axis=1, sort=False)
 
