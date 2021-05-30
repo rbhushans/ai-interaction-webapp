@@ -42,4 +42,10 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("home-dialog-img").setAttribute("src", "../static/img/TEA Logo.png") 
         dialog.showModal();
     })
+
+    //Connect start button to the correct page
+    document.getElementById('start-btn').addEventListener("click", () => {
+        document.location.href = "/train";
+    })
+
 })
