@@ -34,7 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
         let items = document.getElementById("selected-features-list").getElementsByTagName("li");
         let data = []
         for(var i = 0; i < items.length; i++){
-            if(items[i].innerText != "") data.push(items[i].innerText)
+            console.log(items[i].innerText)
+            if(items[i].innerText != "" && items[i].innerText != "Other") data.push(items[i].innerText)
+            else if(items[i].innerText == "Other") data.push("Not Specified")
         }
 
         // Store the features as a string array locally on the client side
