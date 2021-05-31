@@ -18,13 +18,15 @@
     </header>
     
     <div class="main-body">
-        <div class="train-body-left">
-            <p id="feature-instructions">
-                Machine learning models are created by analyzing multiple categories of information
-                called features. Feature selection is performed by the humans that are responsible 
-                for coding the model. Please select the features you would like to train your model with.
-            </p>
-            <div id="warning-box"></div>
+        <div id="left-outer-div" class="train-body-left">
+            <div id="feature-instructions">
+                <p id="feature-instructions-txt">
+                    Machine learning models are created by analyzing multiple categories of information
+                    called features. Feature selection is performed by the humans that are responsible 
+                    for coding the model. Please select the features you would like to train your model with.
+                </p>
+                <div id="warning-box"></div>
+            </div>
             <div id="feature-buttons">
                 <button class="feature-option">Age</button>
                 <button class="feature-option">Sex</button>
@@ -35,6 +37,9 @@
                 <button class="feature-option">Juvenile Other Count</button>
                 <button class="feature-option">Priors Count</button>
                 <button class="feature-option">Charge Degree</button>
+            </div>
+            <div id="prev-model-outer-div" class="previous-model-outer-div">
+            
             </div>
         </div>
         <div class="train-body-right">

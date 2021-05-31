@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function(){
     // document.getElementById("results-precision").innerText = "Your model's precision is " + prec
     // document.getElementById("results-recall").innerText = "Your model's recall is " + rec
 
+    // Write out the user model's selected features
+    writeFeaturesToList(document.getElementById('feature-list-last'));
+
     document.getElementById("results-close").addEventListener('click', function() {
         dialog.close()
     })
@@ -90,3 +93,30 @@ document.addEventListener("DOMContentLoaded", function(){
     })
 })
     
+/**
+ * Write out the trained model's features to an HTML unordered list.
+ * 
+ * @param {<ul>} HTMLList
+ */
+function writeFeaturesToList(HTMLList) {
+    var featureArray = getModelFeatures();
+
+    for (var index in featureArray) {
+        var newItem = document.createElement("li");
+        newItem.innerText = featureArray[index];
+        HTMLList.appendChild(newItem);
+    }    
+
+}
+
+/**
+ * Retrieves the trained models feature names that are stored in the client browser 
+ * storage.
+ * 
+ * @returns {String Array}
+ */
+function getModelFeatures() {
+    var featureArray = JSON.parse(window.localStorage.getItem("features"));
+    return featureArray;
+
+}

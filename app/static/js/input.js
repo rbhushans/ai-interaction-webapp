@@ -36,13 +36,17 @@ document.addEventListener("DOMContentLoaded", function() {
         for(var i = 0; i < items.length; i++){
             if(items[i].innerText != "") data.push(items[i].innerText)
         }
+
+        // Store the features as a string array locally on the client side
+        store.clear()
+        storeFeaturesSelected(data);
+
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/train_model');
         xhr.onreadystatechange = function() { // Call a function when the state changes.
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                 console.log("Received model: " + this.responseText)
                 var data = this.responseText.split("|")
-                store.clear()
                 store.setItem('model', data[0])
                 store.setItem("precision", data[1])
                 store.setItem("recall", data[2])
@@ -62,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
         createAndApplyInfoBox(currBtn, currBtnTxt);
     }
 
+    // Check if a prior model exists and write out the selected options
+    checkAndWriteOutPreviousModel();
 
 }) //End of on 'document loaded' event
 
@@ -74,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 function createAndApplyInfoBox(btnElem, btnTxt) {
     var originalText = "Machine learning models are created by analyzing multiple categories of information\ncalled features. Feature selection is performed by the humans that are responsible\nfor coding the model. Please select the features you would like to train your model with."
-    var topTextBox = document.getElementById("feature-instructions");
+    var topTextBox = document.getElementById("feature-instructions-txt");
     var warningBox = document.getElementById("warning-box");
     console.log(warningBox)
 
@@ -142,4 +148,58 @@ function startLoadingAnimation(btnElem) {
     loadingElem.classList.add("fa-circle-o-notch");
     loadingElem.classList.add("fa-spin");
     btnElem.appendChild(loadingElem);
+}
+
+/**
+ * Store an array of strings in the browser local-storage client-side that represent the last trained
+ * model's selected features. 
+ * 
+ * @param {String Array} data
+ */
+function storeFeaturesSelected(data) {
+    window.localStorage.setItem("features", JSON.stringify(data));
+}
+
+/**
+ * Retrieves the trained models feature names that are stored in the client browser 
+ * storage.
+ * 
+ * @returns {String Array}
+ */
+ function getPastModelFeatures() {
+    var featureArray = JSON.parse(window.localStorage.getItem("features"));
+    return featureArray;
+
+}
+
+/**
+ * Check if the user has already created a model. If so, write out previous 
+ * model's features to the screen. 
+ * 
+ */
+function checkAndWriteOutPreviousModel() {
+    // Check if previous model exists
+    var modelFeatures = JSON.parse(window.localStorage.getItem("features"));
+    if (modelFeatures != null) {
+        // Previous model exists
+        var outerDiv = document.getElementById("prev-model-outer-div");
+
+        var headerElem = document.createElement("h3");
+        headerElem.classList.add("previous-model-header");
+        headerElem.innerText = "Your Last Model's Features:";
+
+        var previousModelDiv = document.createElement('div');
+        previousModelDiv.classList.add("previous-model-features");
+
+        // Add all features to the page
+        for (var index in modelFeatures) {
+            var listItem = document.createElement("div");
+            listItem.innerText = modelFeatures[index];
+            previousModelDiv.appendChild(listItem);
+        }
+
+        outerDiv.appendChild(headerElem);
+        outerDiv.appendChild(previousModelDiv);
+        
+    }
 }
