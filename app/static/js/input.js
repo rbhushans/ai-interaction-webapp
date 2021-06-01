@@ -175,7 +175,6 @@ function storeFeaturesSelected(data) {
  function getPastModelFeatures() {
     var featureArray = JSON.parse(window.localStorage.getItem("features"));
     return featureArray;
-
 }
 
 /**
@@ -188,24 +187,42 @@ function checkAndWriteOutPreviousModel() {
     var modelFeatures = JSON.parse(window.localStorage.getItem("features"));
     if (modelFeatures != null) {
         // Previous model exists
-        var outerDiv = document.getElementById("prev-model-outer-div");
+        // var outerDiv = document.getElementById("prev-model-outer-div");
 
-        var headerElem = document.createElement("h3");
-        headerElem.classList.add("previous-model-header");
-        headerElem.innerText = "Your Last Model's Features:";
+        // var headerElem = document.createElement("h3");
+        // headerElem.classList.add("previous-model-header");
+        // headerElem.innerText = "Your Last Model's Features:";
 
-        var previousModelDiv = document.createElement('div');
-        previousModelDiv.classList.add("previous-model-features");
+        // var previousModelDiv = document.createElement('div');
+        // previousModelDiv.classList.add("previous-model-features");
 
-        // Add all features to the page
-        for (var index in modelFeatures) {
-            var listItem = document.createElement("div");
-            listItem.innerText = modelFeatures[index];
-            previousModelDiv.appendChild(listItem);
+        // // Add all features to the page
+        // for (var index in modelFeatures) {
+        //     var listItem = document.createElement("div");
+        //     listItem.innerText = modelFeatures[index];
+        //     previousModelDiv.appendChild(listItem);
+        // }
+
+        // outerDiv.appendChild(headerElem);
+        // outerDiv.appendChild(previousModelDiv);
+
+        let featureOptionBtns = document.getElementsByClassName('feature-option');
+        let fList = document.getElementById("selected-features-list")
+        for (var i = 0; i < featureOptionBtns.length; i++) {
+            let button_text = featureOptionBtns[i].innerText;
+            if(modelFeatures.includes(button_text)){
+                featureOptionBtns[i].setAttribute("class", "feature-selected feature-option")
+                let item = document.createElement("li");
+                item.appendChild(document.createTextNode(button_text))
+                let input = document.createElement("input");
+                input.setAttribute("type", "hidden")
+                input.setAttribute("name", "params");
+                input.setAttribute("value", button_text)
+                item.appendChild(input)
+                item.setAttribute("class", "selected-features-item")
+                fList.appendChild(item)
+            }
         }
-
-        outerDiv.appendChild(headerElem);
-        outerDiv.appendChild(previousModelDiv);
         
     }
 }
