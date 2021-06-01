@@ -190,9 +190,9 @@ body {
     cursor: pointer;
 }
 
-html, body{
+/* html, body{
     height: 100%;
-}
+} */
 
 .main-body {
     display: flex;
@@ -421,15 +421,25 @@ html, body{
     position: fixed;
     left: 100%;
     top: 7em;
-    width: 40%;
-
     background-color: white;
     border-left: solid black 4px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+}
+
+#results-gif {
+    height: 100%;
+    width: auto;
+}
+
+#results-end-cont {
+    width: 60%;
+    border-left: solid black 4px;
+    padding-left: 20px;
+    height: 80%;
 }
 
 #final-question {
