@@ -250,20 +250,17 @@ body {
 }
 
 #feature-instructions {
-    /*
-    font-size: max(1.2vw, 20px);
-    */
+    font-size: 2vw;
     height: 14em;
     width: calc(100% - 2em);
     margin-bottom: 0;
     padding: 1em;
-
 }
 
 .bubble {
 	position: relative;
 	max-width: calc(100% - 2em);
-    height: 10em; 
+    height: min(15vw, 100px); 
 	
 	background-color: #6BB2FC;
     color:#fff;
@@ -290,17 +287,13 @@ body {
 
 #feature-instructions-txt {
     text-align: center;
-    /*
-    font-size: max(1.2vw, 20px);
-    */
+    font-size: min(2vw, 20px);
 }
 
 #warning-box {
     color: #FBFF3C;
     text-align: center;
-    /*
-    font-size: max(1.2vw, 20px);
-    */
+    font-size: min(2vw, 20px);
     height: 4em;
 }
 
@@ -344,14 +337,6 @@ body {
         width: 7em;
         height: 1em;
         margin: 5px;
-    }
-
-    #feature-buttons {
-        margin-top: 20px;
-    }
-
-    #feature-instructions, #warning-box {
-        font-size: 15px;
     }
 }
 
