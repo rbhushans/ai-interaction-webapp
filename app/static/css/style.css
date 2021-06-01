@@ -256,23 +256,34 @@ body {
 
 #feature-instructions {
     font-size: 2vw;
-    height: 14em;
-    width: calc(100% - 2em);
+    height: 14rem;
+    width: calc(100% - 2rem);
     margin-bottom: 0;
-    padding: 1em;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
 }
 
 .bubble {
 	position: relative;
-	max-width: calc(100% - 2em);
-    height: min(15vw, 100px); 
+	width: calc(100% - 3rem);
+    height: min(15vw, 140px); 
 	
 	background-color: #6BB2FC;
     color:#fff;
-	padding: 1.125em 1.5em;
-	font-size: 1.6em;
+	padding: 1.125rem 1.5rem;
+	font-size: 1.6rem;
 	border-radius: 1rem;
     box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .bubble::before {
@@ -281,7 +292,7 @@ body {
 	width: 0;
 	height: 0;
 	bottom: 100%;
-	left: 1.5em; 
+	left: 2.6rem; 
 	border: .75rem solid transparent;
 	border-top: none;
 
