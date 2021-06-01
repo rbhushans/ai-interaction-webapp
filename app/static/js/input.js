@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Store the features as a string array locally on the client side
-        store.clear()
         storeFeaturesSelected(data);
 
         let xhr = new XMLHttpRequest();
@@ -52,11 +51,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 store.setItem('model', data[0])
                 store.setItem("precision", data[1])
                 store.setItem("recall", data[2])
+                var existingNumVal = parseInt(store.getItem("numTrainTimes"));
+                store.setItem("numTrainTimes", (existingNumVal + 1))
                 window.location = "results"
             }
         }
         xhr.send(data);
         startLoadingAnimation(document.getElementById("start-train-btn"));
+
     })
     
     //Attach popup dialog on mouseover with info about the feature
@@ -71,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check if a prior model exists and write out the selected options
     checkAndWriteOutPreviousModel();
 
+    // Set the correct Assistant message
+    document.getElementById("feature-instructions-txt").innerText = getAssistantSpeech();
+
 }) //End of on 'document loaded' event
 
 
@@ -81,10 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
  * @param {String} btnTxt 
  */
 function createAndApplyInfoBox(btnElem, btnTxt) {
-    var originalText = "Machine learning models are created by analyzing multiple categories of information\ncalled features. Feature selection is performed by the humans that are responsible\nfor coding the model. Please select the features you would like to train your model with."
     var topTextBox = document.getElementById("feature-instructions-txt");
     var warningBox = document.getElementById("warning-box");
-    console.log(warningBox)
 
     var dialogText = "";
     let warningText = "";
@@ -133,7 +136,7 @@ function createAndApplyInfoBox(btnElem, btnTxt) {
     });
 
     btnElem.addEventListener('mouseout', () => {
-        topTextBox.innerText = originalText;
+        topTextBox.innerText = getAssistantSpeech();
         warningBox.innerText = "";
     })
 }
@@ -149,6 +152,7 @@ function startLoadingAnimation(btnElem) {
     loadingElem.classList.add("fa");
     loadingElem.classList.add("fa-circle-o-notch");
     loadingElem.classList.add("fa-spin");
+    loadingElem.style.marginLeft = "5px"; 
     btnElem.appendChild(loadingElem);
 }
 
@@ -204,4 +208,22 @@ function checkAndWriteOutPreviousModel() {
         outerDiv.appendChild(previousModelDiv);
         
     }
+}
+
+/**
+ * Single function that's called to get the next message needed to help
+ * guide the user through the application
+ * 
+ * @returns {String} - String to put in the assistant dialog box
+ */
+function getAssistantSpeech() {
+    // Start with returnText set to the first thing the assistant says to the user on startup
+    returnText = "Machine learning models are created by analyzing multiple categories of information called features. Feature selection is performed by the human developers that are responsible for coding the model. Please select the features you would like to use to train your model.";
+
+    // TODO: Create checks that change the assistant message text
+    // TODO (cont): to better reflect where the user is in the webapp process and
+    // TODO (cont): guide them in a direction of effective education in ML
+
+
+    return returnText;
 }

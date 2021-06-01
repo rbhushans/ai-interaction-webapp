@@ -1,3 +1,5 @@
+const num_train = parseInt(window.localStorage.getItem("numTrainTimes")); // Number of times user has trained a model
+
 function saveData(blob, fileName) // does the same as FileSaver.js
 {
     var a = document.createElement("a");
@@ -11,7 +13,7 @@ function saveData(blob, fileName) // does the same as FileSaver.js
     window.URL.revokeObjectURL(url);
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
     let dialog = document.getElementById("results-dialog");
     dialog.close()
     store = window.localStorage
@@ -90,7 +92,13 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
         xhr.send(data);
-    })
+    });
+
+    // Set the transition to the end screen
+    document.getElementById("end-button").addEventListener("click", () => {
+        uiEndTransition();
+
+    });
 })
     
 /**
@@ -118,5 +126,19 @@ function writeFeaturesToList(HTMLList) {
 function getModelFeatures() {
     var featureArray = JSON.parse(window.localStorage.getItem("features"));
     return featureArray;
+
+}
+
+/**
+ * Move the normal results page to the left (off screen) and
+ * pull in end page to finish session. 
+ * 
+ */
+function uiEndTransition() {
+    var normalResultsPage = document.getElementById("results-main");
+    normalResultsPage.style.transform = "translate(-100%)"
+
+    var endResultsPage = document.getElementById("results-end");
+    endResultsPage.style.transform = "translate(-100%)"
 
 }

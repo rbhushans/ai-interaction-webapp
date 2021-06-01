@@ -50,7 +50,7 @@ def train_model():
     result_str = ''.join(random.choice(letters) for i in range(32))
 
     filename, precision, recall, coef = model.construct_lr_model(params, result_str)
-    print("Model created with features", params, "and precision =", precision, "and recall =", recall, "and coefficients =", coef)
+    #print("Model created with features", params, "and precision =", precision, "and recall =", recall, "and coefficients =", coef)
     # model = filename + ".pkl", encoder = filename + "_enc.pkl" 
     session['file_name'] = filename # Save to session of user (locally on server)
 
@@ -77,7 +77,7 @@ def test_model():
         temp_file.close()
         pred, conf = model.test_lr_model(modelFile, encFile, scalerFile, session['file_name'], params)
 
-        print(session['file_name'], "predicts", pred, "with confidence of", conf)
+        #print(session['file_name'], "predicts", pred, "with confidence of", conf)
         return str(pred) + "|" + str(conf)
     else:
         # No model trained yet, send error

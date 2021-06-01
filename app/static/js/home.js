@@ -26,6 +26,9 @@ function doScrolling(element, duration) {
   
 
 document.addEventListener("DOMContentLoaded", function(){
+    // Clear out localStorage and set initial values
+    initializeLocalStorage();
+
     let dialog = document.getElementById("home-dialog");
     dialog.close()
     document.getElementById("down-arrow-1").addEventListener("click", doScrolling.bind(null, "#home-section-2", 1000))
@@ -49,3 +52,17 @@ document.addEventListener("DOMContentLoaded", function(){
     })
 
 })
+
+/**
+ * Reset all localStorage values and initialize some necessary values for future
+ * checks.
+ * 
+ */
+function initializeLocalStorage() {
+    // Clear
+    window.localStorage.clear();
+    
+    // Add initial values
+    window.localStorage.setItem("numTrainTimes", 0);
+
+}
