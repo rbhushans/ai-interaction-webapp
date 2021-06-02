@@ -173,7 +173,7 @@ def save_disp_impact_img(disp_impact, features, filename_str):
   plt.axhline(y=1.25, xmin=0, xmax=2, linestyle='--', color='black')
   plt.axhline(y=1, xmin=0, xmax=2, linestyle='--', color='green')
   plt.axhline(y=0.75, xmin=0, xmax=2, linestyle='--', color='black')
-
+  plt.ylabel('Recid | African-American : Recid | Caucasian')
   plt.title('Disparate Impact')
   filename = filename_str + '_disp_impact'
   plt.savefig(filename)
@@ -194,8 +194,8 @@ def save_err_ratio_img(err_ratio, features, filename_str):
   plt.axhline(y=1.25, xmin=0, xmax=2, linestyle='--', color='black')
   plt.axhline(y=1, xmin=0, xmax=2, linestyle='--', color='green')
   plt.axhline(y=0.8, xmin=0, xmax=2, linestyle='--', color='black')
-
-  #plt.title('Error Rate Ratio')
+  plt.ylabel('African-American Error : Caucasian Error')
+  plt.title('Error Rate Ratio')
   filename = filename_str + '_err_ratio' 
   plt.savefig(filename)
   plt.clf()
