@@ -2,6 +2,7 @@ import pandas as pd
 import sklearn 
 import os
 import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 import numpy as np
 
 from sklearn import preprocessing 
@@ -17,7 +18,7 @@ def construct_lr_model_graph(features):
     deg_enc = ['x2_(co3)', 'x2_(ct)',
     'x2_(f1)', 'x2_(f2)', 'x2_(f3)', 'x2_(f5)', 'x2_(f6)', 'x2_(f7)', 'x2_(m1)',
     'x2_(m2)', 'x2_(mo3)', 'x2_(ni0)', 'x2_(tcx)', 'x2_(x)', 'x2_nan']
-    df = pd.read_csv('cox-violent-parsed.csv', low_memory=False)
+    df = pd.read_csv('data/cox-violent-parsed.csv', low_memory=False)
     df.drop(df.loc[df['is_recid']==-1].index, inplace=True) # Removed all is_recid == -1
     df = df.reset_index()
     df = df.astype(str).apply(lambda x: x.str.lower())
@@ -142,8 +143,8 @@ def construct_lr_model_graph(features):
     else:
         num_unpriv_pos = unpriv_pred['is_recid'].value_counts()[1]
 
-    num_pred_pos = validation_pred['is_recid'].value_counts()[1]
-    num_nonpriv_pos = nonpriv_pred['is_recid'].value_counts()[1]
+    #num_pred_pos = validation_pred['is_recid'].value_counts()[1]
+    #num_nonpriv_pos = nonpriv_pred['is_recid'].value_counts()[1]
 
     priv_error_rate = priv_error.shape[0] / priv_pred.shape[0]
     unpriv_error_rate = unpriv_error.shape[0] / unpriv_pred.shape[0]
