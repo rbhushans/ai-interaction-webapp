@@ -3,6 +3,12 @@ import sklearn
 import pickle
 import os
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+import circlify
+import re
 
 from sklearn import preprocessing 
 from sklearn.model_selection import train_test_split
@@ -49,6 +55,7 @@ def construct_lr_model(features, filename_str):
     X_cat = df[selected_cat_features]
     X_cat = X_cat.fillna('Not Specified')
     X_num = df[selected_num_features]
+    X_num = X_num.fillna(0)
     enc = preprocessing.OneHotEncoder()
     scaler = preprocessing.StandardScaler()
 
@@ -76,9 +83,74 @@ def construct_lr_model(features, filename_str):
     y_pred = model.predict(x_validation)
     precision = precision_score(y_validation, y_pred, pos_label='1')
     recall = recall_score(y_validation, y_pred, pos_label='1')
-    coef = model.coef_[0]
-    coef = [abs(number) for number in coef]
-    coef = sorted(coef)
+    coef = pd.concat([pd.DataFrame(x_train.columns),pd.DataFrame(np.abs(np.transpose(model.coef_)))], axis = 1)
+    #randomly choose x, y values for each feature
+    coef.columns = ['Feature', 'Weight']
+    coef = coef[coef['Weight'] != 0]
+    coef['Weight'] = coef['Weight'] * 100
+    print(coef)
+
+    if "c_charge_degree" in selected_cat_features:
+        charge_sum = 0
+        charge_count = 0
+        for index, row in coef.iterrows():
+            if "(" in row['Feature']:
+                print(row)
+                charge_sum += row['Weight']
+                charge_count += 1
+        coef = coef[~coef['Feature'].str.contains("\(") & ~coef['Feature'].str.contains("nan")]
+        coef = coef.append({'Feature': 'Charge Degree', 'Weight': charge_sum/charge_count}, ignore_index=True)
+    print(coef)
+
+    circles = circlify.circlify(coef['Weight'].tolist())
+    fig, ax = plt.subplots(figsize=(10,10))
+
+    # Title
+    ax.set_title('Feature Intensities')
+
+    # Remove axes
+    ax.axis('off')
+
+    # Find axis boundaries
+    lim = max(
+        max(
+            abs(circle.x) + circle.r,
+            abs(circle.y) + circle.r,
+        )
+        for circle in circles
+    )
+    plt.xlim(-lim, lim)
+    plt.ylim(-lim, lim)
+
+    # list of labels
+    regex = re.compile('x._')
+    labels = []
+    for v in coef['Feature'].values:
+        if re.match(regex, v):
+            vals = v.split("_")
+            labels.append(vals[1])
+        else:
+            labels.append(v)
+
+    colors = plt.cm.get_cmap('hsv', len(coef))
+    i = 0
+    legend_elems = []
+    # print circles
+    for circle, label in zip(circles, labels):
+        x, y, r = circle
+        ax.add_patch(plt.Circle((x, y), r*0.9, alpha=0.7, linewidth=2, color=colors(i)))
+        legend_elems.append(Line2D([0], [0], color=colors(i), marker='o', label=label))
+        i += 1
+        if r > 0.1:
+            plt.annotate(
+                label, 
+                (x,y ) ,
+                va='center',
+                ha='center',
+                size=r*50
+            )
+    ax.legend(handles=legend_elems)
+    plt.savefig("feature_intensity_" + filename_str)
 
     filename= 'models_users/model&' + "&".join(selected_num_features) + "&" + "&".join(selected_cat_features) + "&" + filename_str 
 
