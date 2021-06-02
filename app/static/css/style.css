@@ -540,6 +540,12 @@ body {
     width: 40%;
 }
 
+#quad2-div, #quad3-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 #quad-right {
     height: 100%;
     width: 59%;
