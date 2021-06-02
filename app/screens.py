@@ -83,6 +83,16 @@ def test_model():
         # No model trained yet, send error
         return 404
 
+@app.route("/get_graph/<graph_name>", methods=["GET"])
+def get_graph(graph_name):
+    if 'file_name' in session:
+        print(graph_name)
+        temp_file = open(session['file_name'] + graph_name, 'rb')
+        temp_file.close()
+        return send_file("../" + session['file_name'] + graph_name)
+    else:
+        return 404
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
