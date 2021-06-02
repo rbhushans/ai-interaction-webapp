@@ -150,7 +150,7 @@ def construct_lr_model(features, filename_str):
                 size=r*50
             )
     ax.legend(handles=legend_elems)
-    plt.savefig("feature_intensity_" + filename_str)
+    plt.savefig("models_users/feature_intensity_" + filename_str)
 
     filename= 'models_users/model&' + "&".join(selected_num_features) + "&" + "&".join(selected_cat_features) + "&" + filename_str 
 
