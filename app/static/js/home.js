@@ -39,13 +39,6 @@ document.addEventListener("DOMContentLoaded", function(){
         dialog.close()
     })
 
-    document.getElementById("home-ai").addEventListener("click", function(){
-        document.getElementById("home-dialog-header").innerText = "What is AI?"
-        document.getElementById("home-dialog-body").innerText = "AI stands for Artificial Intelligence, ..."
-        document.getElementById("home-dialog-img").setAttribute("src", "../static/img/TEA Logo.png") 
-        dialog.showModal();
-    })
-
     //Connect start button to the correct page
     document.getElementById('start-btn').addEventListener("click", () => {
         document.location.href = "/train";

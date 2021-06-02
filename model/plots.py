@@ -160,7 +160,6 @@ def construct_lr_model_graph(features, filename_str):
 
 def save_disp_impact_img(disp_impact, features, filename_str):
   plt.ioff()
-  fig, axs = plt.subplots(1, 2)
   x = [1]
   di_y = [disp_impact]
   plt.ylim(bottom = 0, top = 2)
