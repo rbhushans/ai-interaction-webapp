@@ -90,6 +90,15 @@ body {
     color: black;
 }
 
+.home-paragraph-2 {
+    font-size: max(2vw, 20px);
+    font-family: var(--body-font);
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+    color: black;
+}
+
 .home-title {
     color: rgb(148, 53, 53);
     font-size: max(6vw, 30px);
