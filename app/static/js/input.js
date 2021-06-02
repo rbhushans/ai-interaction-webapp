@@ -249,7 +249,7 @@ function getAssistantSpeech() {
     if (parseInt(window.localStorage.getItem("numTrainTimes")) == 1) {
         returnText = "Welcome back to the model training page!\nHow about trying out \
                       some different features to see what the effect is on your model's \
-                      accuracy and fairness!"
+                      accuracy and fairness?"
     }
 
     // * Check that displays on third time training
