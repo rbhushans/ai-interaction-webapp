@@ -452,6 +452,9 @@ body {
     border-left: solid black 4px;
     padding-left: 20px;
     height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #final-question {
@@ -566,7 +569,6 @@ body {
     width: 100%;
     height: calc(100% - 2rem);
     padding: 2rem 0;
-
 }
 
 #feat-intensity {
@@ -575,8 +577,9 @@ body {
 }
 
 #err-ratio, #disp-impact {
-    height: 100%;
-    width: auto;
+    width: 80%;
+    height: auto;
+    max-height: 100%;
 }
 
 .results-btn-inner-div {
