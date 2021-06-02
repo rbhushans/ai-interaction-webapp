@@ -496,6 +496,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    border-left:rgb(0, 21, 80) solid;
 }
 
 #results-test {
@@ -507,6 +508,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 0;
+    border-right:rgb(0, 21, 80) solid;
 }
 
 #results-stats {
@@ -524,6 +526,7 @@ body {
 .results-caption {
     color:rgb(87, 87, 87);
     text-align: center;
+    padding: 10px;
 }
 
 .results-quad-div {
@@ -532,9 +535,14 @@ body {
     height: 50%;
 }
 
-#quad1-div, #quad-right {
+#quad1-div{
     height: 100%;
-    width: 49%;
+    width: 40%;
+}
+
+#quad-right {
+    height: 100%;
+    width: 59%;
 }
 
 #quad1-div {
@@ -558,15 +566,14 @@ body {
 }
 
 #err-ratio, #disp-impact {
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
 }
 
 .results-btn-inner-div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     font-size: 1.4em;
     font-weight: bold;
     width: 80%;
