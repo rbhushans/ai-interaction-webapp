@@ -625,6 +625,10 @@ body {
     padding-left: 10px;
 }
 
+#retrain-txt {
+    padding: 10px;
+}
+
 #test-persona, #retrain-button, #end-button, #restart-button {
     border-radius: 10px;
     background-color: transparent;
