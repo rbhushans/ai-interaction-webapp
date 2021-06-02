@@ -30,8 +30,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check if the user has at least trained once before showing the 'end-experience' button
     if (parseInt(window.localStorage.getItem("numTrainTimes")) > 1) {
         document.getElementById("end-div").style.visibility = "visible";
+        document.getElementById("retrain-txt").innerText = "Retrain your Model to Try New Features:"
     } else {
         document.getElementById("end-div").style.visibility = "hidden";
+        document.getElementById("retrain-txt").innerText = "There is More to Discover\nRetrain your Model to Try New Features:"
     }
 
     document.getElementById("results-close").addEventListener('click', function() {
