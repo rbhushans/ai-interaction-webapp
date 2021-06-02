@@ -160,6 +160,7 @@ def construct_lr_model_graph(features, filename_str):
 
 def save_disp_impact_img(disp_impact, features, filename_str):
   plt.ioff()
+  plt.clf()
   x = [1]
   di_y = [disp_impact]
   plt.ylim(bottom = 0, top = 2)
@@ -181,6 +182,7 @@ def save_disp_impact_img(disp_impact, features, filename_str):
 
 def save_err_ratio_img(err_ratio, features, filename_str):
   plt.ioff()
+  plt.clf()
   x = [1]
   er_y = [err_ratio]
   plt.ylim(bottom = 0, top = 2)
