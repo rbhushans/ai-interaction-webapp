@@ -82,7 +82,7 @@ body {
 }
 
 .home-paragraph {
-    font-size: max(2vw, 20px);
+    font-size:  max(1.2vw, 16px); 
     font-family: var(--body-font);
     padding-left: 10%;
     padding-right: 10%;
@@ -91,7 +91,7 @@ body {
 }
 
 .home-paragraph-2 {
-    font-size: max(2vw, 20px);
+    font-size: max(1.5vw, 16px);
     font-family: var(--body-font);
     padding-left: 10%;
     padding-right: 10%;
