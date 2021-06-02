@@ -40,22 +40,39 @@ document.addEventListener("DOMContentLoaded", function() {
         dialog.close()
     })
 
+    images = ["_feature_intensity.png", "_disp_impact.png", "_err_ratio.png"]
+    img_ids = ["feat-intensity", "disp-impact", "err-ratio"]
     var xmlhttp;
-    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    } else { // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.responseType = "blob"
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {    
-            var urlCreator = window.URL || window.webkitURL;
-            var imageUrl = urlCreator.createObjectURL(this.response);
-            document.getElementById("feat-intensity").src = imageUrl;
+
+
+
+
+    (function loop(i, length) {
+        if (i>= length) {
+            return;
         }
-    };    
-    xmlhttp.open("GET", '/get_graph/_feature_intensity.png');
-    xmlhttp.send(null);
+        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else { // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.responseType = "blob"
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {    
+                var urlCreator = window.URL || window.webkitURL;
+                var imageUrl = urlCreator.createObjectURL(this.response);
+                document.getElementById(img_ids[i]).src = imageUrl;
+                loop(i+1, length)
+            }
+        };    
+        xmlhttp.open("GET", '/get_graph/' + images[i]);
+        xmlhttp.send(null);
+    })(0, images.length);
+
+    
+    
+
+
 
     document.getElementById("test-persona").addEventListener("click", function() {
         let input_items = document.getElementById("results-features").getElementsByTagName("input");

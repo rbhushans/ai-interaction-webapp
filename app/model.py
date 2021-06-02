@@ -24,7 +24,7 @@ def construct_lr_model(features, filename_str):
     df = df.reset_index()
     df = df.astype(str).apply(lambda x: x.str.lower())
     whole_df = df [['is_recid', 'age', 'sex', 'race', 'dob', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count', 'c_charge_desc', 'c_charge_degree']]
-
+    print(whole_df['race'].unique())
     features = sorted(features)
 
     selected_num_features = []
@@ -95,11 +95,11 @@ def construct_lr_model(features, filename_str):
         charge_count = 0
         for index, row in coef.iterrows():
             if "(" in row['Feature']:
-                print(row)
                 charge_sum += row['Weight']
                 charge_count += 1
         coef = coef[~coef['Feature'].str.contains("\(") & ~coef['Feature'].str.contains("nan")]
         coef = coef.append({'Feature': 'Charge Degree', 'Weight': charge_sum/charge_count}, ignore_index=True)
+    coef['Feature'] = coef['Feature'].str.title()
     # print(coef)
 
     circles = circlify.circlify(coef['Weight'].tolist())
@@ -123,7 +123,7 @@ def construct_lr_model(features, filename_str):
     plt.ylim(-lim, lim)
 
     # list of labels
-    regex = re.compile('x._')
+    regex = re.compile('X._')
     labels = []
     for v in coef['Feature'].values:
         if re.match(regex, v):
@@ -203,6 +203,8 @@ def test_lr_model(model, enc, scaler, filename, features):
             else:
                 str_list.append(features[5])
         elif f == "race":
+            if features[6] == "native-american":
+                feature[6] = "native american"
             str_list.append(features[6])
         elif f == "c_charge_degree":
             str_list.append("(" + features[7] + ")")

@@ -1,6 +1,7 @@
 from modelCleaner import cleaner
 from app import app
 from app import model
+from model import plots
 from flask import render_template, request, send_file, Response, stream_with_context, session
 import pickle
 import os
@@ -54,6 +55,7 @@ def train_model():
     # model = filename + ".pkl", encoder = filename + "_enc.pkl" 
     session['file_name'] = filename # Save to session of user (locally on server)
 
+    file1, file2 = plots.construct_lr_model_graph(params, filename)
     return filename + "|" + str(precision) + "|" + str(recall) + "|" + str(coef)
 
 @app.route("/test_model", methods=["POST"])
