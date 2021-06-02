@@ -27,6 +27,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Write out the user model's selected features
     writeFeaturesToList(document.getElementById('feature-list-last'));
 
+    // Check if the user has at least trained once before showing the 'end-experience' button
+    if (parseInt(window.localStorage.getItem("numTrainTimes")) > 1) {
+        document.getElementById("end-div").style.visibility = "visible";
+    } else {
+        document.getElementById("end-div").style.visibility = "hidden";
+    }
+
     document.getElementById("results-close").addEventListener('click', function() {
         dialog.close()
     })
