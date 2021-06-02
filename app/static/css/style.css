@@ -534,7 +534,11 @@ body {
     align-items: center;
 
     width: 100%;
+}
 
+#feat-intensities {
+    width: 100%;
+    height: auto;
 }
 
 .results-btn-inner-div {

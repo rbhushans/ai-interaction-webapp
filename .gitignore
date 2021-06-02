@@ -7,3 +7,4 @@ instance/
 .DStore
 env/
 models_users/*.pkl
+models_users/*.png

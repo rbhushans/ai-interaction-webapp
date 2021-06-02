@@ -88,7 +88,7 @@ def construct_lr_model(features, filename_str):
     coef.columns = ['Feature', 'Weight']
     coef = coef[coef['Weight'] != 0]
     coef['Weight'] = coef['Weight'] * 100
-    print(coef)
+    # print(coef)
 
     if "c_charge_degree" in selected_cat_features:
         charge_sum = 0
@@ -100,7 +100,7 @@ def construct_lr_model(features, filename_str):
                 charge_count += 1
         coef = coef[~coef['Feature'].str.contains("\(") & ~coef['Feature'].str.contains("nan")]
         coef = coef.append({'Feature': 'Charge Degree', 'Weight': charge_sum/charge_count}, ignore_index=True)
-    print(coef)
+    # print(coef)
 
     circles = circlify.circlify(coef['Weight'].tolist())
     fig, ax = plt.subplots(figsize=(10,10))
@@ -150,9 +150,10 @@ def construct_lr_model(features, filename_str):
                 size=r*50
             )
     ax.legend(handles=legend_elems)
-    plt.savefig("models_users/feature_intensity_" + filename_str)
-
+    
     filename= 'models_users/model&' + "&".join(selected_num_features) + "&" + "&".join(selected_cat_features) + "&" + filename_str 
+
+    plt.savefig(filename + "_feature_intensity")
 
     outfile = open(filename + '.pkl', 'wb')
     pickle.dump(model, outfile)
