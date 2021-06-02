@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
 
-def construct_lr_model_graph(features):
+def construct_lr_model_graph(features, filename_str):
   features_num = ['age', 'juv_fel_count', 'juv_misd_count', 'juv_other_count', 'priors_count']
   features_cat = ['sex', 'race', 'c_charge_degree']
   sex_enc = ['x0_female', 'x0_male']
@@ -153,12 +153,12 @@ def construct_lr_model_graph(features):
       disp_impact = 2
   else:
       disp_impact = (num_unpriv_pos/unpriv_pred.shape[0]) / (num_priv_pos/priv_pred.shape[0])
-  di_file = save_disp_impact_img(disp_impact, features_edit)
-  err_file = save_err_ratio_img(error_rate_ratio, features_edit)
+  di_file = save_disp_impact_img(disp_impact, features_edit, filename_str)
+  err_file = save_err_ratio_img(error_rate_ratio, features_edit, filename_str)
 
   return di_file, err_file
 
-def save_disp_impact_img(disp_impact, features):
+def save_disp_impact_img(disp_impact, features, filename_str):
   plt.ioff()
   fig, axs = plt.subplots(1, 2)
   x = [1]
@@ -175,12 +175,12 @@ def save_disp_impact_img(disp_impact, features):
   plt.axhline(y=0.75, xmin=0, xmax=2, linestyle='--', color='black')
 
   plt.title('Disparate Impact')
-  filename = 'disp_impact_' + str(features).replace(" ","")
+  filename = filename_str + '_disp_impact'
   plt.savefig(filename)
   plt.clf()
   return filename + '.png'
 
-def save_err_ratio_img(err_ratio, features):
+def save_err_ratio_img(err_ratio, features, filename_str):
   plt.ioff()
   x = [1]
   er_y = [err_ratio]
@@ -196,7 +196,7 @@ def save_err_ratio_img(err_ratio, features):
   plt.axhline(y=0.8, xmin=0, xmax=2, linestyle='--', color='black')
 
   #plt.title('Error Rate Ratio')
-  filename = 'err_ratio_' + str(features).replace(" ","")
+  filename = filename_str + '_err_ratio' 
   plt.savefig(filename)
   plt.clf()
   return filename + '.png'

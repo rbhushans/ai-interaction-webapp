@@ -557,6 +557,11 @@ body {
     height: auto;
 }
 
+#err-ratio, #disp-impact {
+    width: 100%;
+    height: auto;
+}
+
 .results-btn-inner-div {
     display: flex;
     flex-direction: row;

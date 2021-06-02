@@ -55,7 +55,7 @@ def train_model():
     # model = filename + ".pkl", encoder = filename + "_enc.pkl" 
     session['file_name'] = filename # Save to session of user (locally on server)
 
-    file1, file2 = plots.construct_lr_model_graph(params)
+    file1, file2 = plots.construct_lr_model_graph(params, filename)
     return filename + "|" + str(precision) + "|" + str(recall) + "|" + str(coef)
 
 @app.route("/test_model", methods=["POST"])
