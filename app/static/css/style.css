@@ -86,7 +86,7 @@ body {
     font-family: var(--body-font);
     padding-left: 10%;
     padding-right: 10%;
-    text-align: center;
+    text-align: left;
     color: black;
 }
 
