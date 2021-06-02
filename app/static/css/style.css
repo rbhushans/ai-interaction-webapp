@@ -560,10 +560,13 @@ body {
 #results-btn-outer-div {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     width: 100%;
+    height: calc(100% - 2rem);
+    padding: 2rem 0;
+
 }
 
 #feat-intensity {
@@ -578,11 +581,14 @@ body {
 
 .results-btn-inner-div {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     font-size: 1.4em;
     font-weight: bold;
-    width: 80%;
+    text-align: center;
+    width: 100%;
 }
 
 #results-features {
@@ -608,11 +614,6 @@ body {
     align-self: flex-start;
 }
 
-#end-div, #retrain-div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
 
 .end-title {
     margin-bottom: 0;
@@ -632,13 +633,14 @@ body {
     cursor: pointer;
 }
 
-#retrain-button {
-    justify-self: flex-end;
-}
-
 #test-persona:hover, #retrain-button:hover, #end-button:hover, #restart-button:hover {
     color: white;
     background-color: rgb(0, 21, 80);
+}
+
+#end-button, #retrain-button {
+    width: calc(100% - 2rem);
+    text-align: center;
 }
 
 .term-definition {
