@@ -237,10 +237,35 @@ function getAssistantSpeech() {
     // Start with returnText set to the first thing the assistant says to the user on startup
     returnText = "Machine learning models are created by analyzing multiple categories of information called features. Feature selection is performed by the human developers that are responsible for coding the model. Please select the features you would like to use to train your model.";
 
-    // TODO: Create checks that change the assistant message text
-    // TODO (cont): to better reflect where the user is in the webapp process and
-    // TODO (cont): guide them in a direction of effective education in ML
+    let items = document.getElementById("selected-features-list").getElementsByTagName("li");
+    let data = []
+    for(var i = 0; i < items.length; i++){
+        if(items[i].innerText != "" && items[i].innerText != "Other") data.push(items[i].innerText)
+        else if(items[i].innerText == "Other") data.push("Not Specified")
+    }
+    console.log(data);
 
+    // * Check that displays on second time training
+    if (parseInt(window.localStorage.getItem("numTrainTimes")) == 1) {
+        returnText = "Welcome back to the model training page!\nHow about trying out \
+                      some different features to see what the effect is on your model's \
+                      accuracy and fairness!"
+    }
+
+    // * Check that displays on third time training
+    if (parseInt(window.localStorage.getItem("numTrainTimes")) == 2) {
+        returnText = "I admire your determination in creating a fair and accurate model!\
+                      \nSince we know that race, age, and \
+                      sex tend to be unfair/biased features to train on, how about \
+                      trying other features that when combined may create a more \
+                      representative, accurate model without traits that add bias?"
+    }
+
+    // * Check that displays on race, age, and sex attribute selection
+    if ((data.includes("Age")) && (data.includes("Sex")) && (data.includes("Race"))) {
+        returnText = "Are you sure that you want to include categories (i.e. Race, \
+                      Sex, Age) that introduce unfair bias into your model?"
+    }
 
     return returnText;
 }
